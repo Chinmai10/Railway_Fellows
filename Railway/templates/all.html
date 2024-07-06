@@ -1,0 +1,30 @@
+{% extends "layout.html" %} {% block content%}
+<div class=" p-5">
+    <table class="table table-borderless table-hover">
+        <thead class="text-center">
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Type</th>
+            <th>Date</th>
+        </thead>
+        {% for train in Trains %}
+
+        <tr class="text-center">
+            <td>train.source</td>
+            <td> {{train.destination}}</td>
+            <td>{{train.types}}</td>
+            <td> {{train.date}}</td>
+            <td>
+                <a href='{% url "trains" train.id %}'>
+                    <button type="button" class="btn btn-primary">
+                        
+                        BOOK
+
+                </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

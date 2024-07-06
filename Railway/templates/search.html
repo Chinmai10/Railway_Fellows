@@ -1,0 +1,69 @@
+{% extends "layout.html" %} {% block content%}
+
+<div class="no-gutters search_page_main">
+
+    <h4 class="text-center p-4 border-bottom">Search a Train for your needs.</h4>
+
+    <div class="d-flex justify-content-around mb-5 mt-5 " id="search_form">
+    <form method="get" >     
+
+            <input  id="id_source" name="source" type="text" placeholder="Source" />
+
+            
+            <input id="id_destination" name="destination" type="text" placeholder="Destination" />    
+
+            
+            
+            <select name="types" id="id_types">
+                {% for type in types %}
+                <option value="{{type.0}}">{{type.0}}</option>
+                {% endfor %}
+            </select>
+         
+            <input id="id_date" name="date" type="date" />
+
+            <button class="btn btn-danger d-block shadow" type="submit" >Search</button>
+
+    </form>
+</div>
+
+
+{% if Trains.0 %}
+    <h4 class="text-center p-4 border-bottom border-top">All trains available</h4>
+
+ {% else %}
+    <h4 class="text-center p-4 border-bottom border-top">Oops! Nothing found</h4>
+ 
+{% endif %}
+
+<div class="search_result row d-flex justify-content-around">
+    {% for train in Trains %}
+    <div class="card col-md-4 m-4 bg-warning text-light shadow" >
+        <div class="card-body">
+            <h5 class="card-title">{{train.source}} to {{train.destination}}</h5>
+            <p class="card-text ">{{train.types}}</p>
+            <p class="d-inline">{{train.date}}</p>
+            <a class="d-inline" href='{% url "trains" train.id %}'>
+                <button type="button" class="btn btn-dark">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    BOOK
+
+            </button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<script>
+
+document.getElementById('id_date').valueAsDate = new Date();
+
+var t1 = document.getElementById('id_source').value
+if(t1 != ''){
+console.log(t1)
+}
+
+</script>
+{% endblock content %}

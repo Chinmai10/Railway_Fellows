@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block content%}
+
+<div class=" p-5">
+
+    <table class="table table-borderless table-hover">
+        <thead>
+            <th>Train id</th>
+            <th>Booked TIckets</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Type</th>
+            <th>Date</th>
+
+        </thead>
+        {% for booking in Bookings %}
+        <tr>
+            <td>{{booking.trains.id}}</td>
+            <td>{{booking.num_booked}}</td>
+            <td>{{booking.trains.source}}</td>
+            <td>{{booking.trains.destination}}</td>
+            <td>{{booking.trains.types}}</td>
+            <td> {{booking.trains.date}}</td>
+            <td>
+                <a href='{% url "cancel" booking.id %}'>
+                    <button type="button" class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16">
+                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z"/>
+                          </svg>
+                        Cancel 
+
+                </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<a href='{% url "home" %}'>
+    <button type="button " class="btn btn-primary ">
+        <svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="bi bi-arrow-left-circle " viewBox="0 0 16 16 ">
+            <path fill-rule="evenodd " d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z "/>
+          </svg>
+        Go To Home
+
+</button>
+</a>
+{% endblock content %}
