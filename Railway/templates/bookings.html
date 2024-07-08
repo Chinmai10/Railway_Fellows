@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block content%}
+<div class="p-5">
+    <form action="{{url_for('bookings')}}" method="post">
+        {{form.train_id.label}} {{form.train_id}} {{form.count.label}} {{form.count}}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% if submitted %}
+
+<div class=" p-5">
+    <table class="table table-borderless table-hover">
+        <thead>
+            <th>Train Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Total seats</th>
+            <th>Reserved seats</th>
+            <th>Type</th>
+            <th>Cost</th>
+            <th>Date</th>
+
+        </thead>
+
+        {% for booking in Bookings %}
+        <tr>
+            <td>{{booking.train.id}}</td>
+            <td>{{booking.train.source}}</td>
+            <td> {{booking.train.destination}}</td>
+            <td>{{booking.train.seats_total}}</td>
+            <td>{{booking.train.seats_res}}</td>
+            <td>{{booking.train.types}}</td>
+            <td>{{booking.train.cost}}</td>
+            <td> {{booking.train.date}}</td>
+        </tr>
+        {{% endfor %}}
+    </table>
+</div>
+
+
+{% endif %} {% endblock content %}

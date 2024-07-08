@@ -1,0 +1,43 @@
+{% extends "layout.html" %} {% block content%}
+
+<div class="p-5">
+
+<form action="{{url_for('available')}}" method="POST">
+    {{form.date.label}}{{form.date}}
+    <input type="submit" value="Submit"></input>
+</form>
+</div>
+
+{% if submitted %}
+
+<div class="p-5">
+    <table class="table table-borderless table-hover">
+        <thead>
+            <th>Train Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Total seats</th>
+            <th>Reserved seats</th>
+            <th>Type</th>
+            <th>Cost</th>
+            <th>Date</th>
+    
+        </thead>
+    
+        {% for row in rows %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td> {{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td> {{row[6]}}</td>
+            <td>{{row[7]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+{% endblock content %}

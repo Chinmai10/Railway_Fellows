@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from trains  import views
+from trains  import views   
 
 
 admin.site.site_header = "CHINMAI'S  Admin"
@@ -24,8 +24,9 @@ admin.site.index_title = "Welcome to CHINMAI'S ADMIN Portal"
 
 
 urlpatterns = [
-    #path("" , views.index , name='home'),
+    #path("", showHome, name='home'),
+    
     path("admin/" , admin.site.urls),
-    path('',include('trains.urls')),
+    path("",include('trains.urls')),
     
 ]

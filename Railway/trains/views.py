@@ -1,7 +1,3 @@
-
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect,HttpResponse
 from django.views.generic import ListView
 from django.views.generic import DetailView
@@ -10,15 +6,23 @@ from .filters import TrainsFilter
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm,RegisterForm,NumberForm
 from django.contrib.auth import authenticate, login,logout
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
+
 # Create your views here.
 
 from .models import Users,Trains,Booking
 from django.views.decorators.csrf import csrf_protect
 
+
+
 def showHome(request):
     context = {'isHome': True}
     return render(request, 'home.html', context)
-
 
 class AllTrainsListView(ListView):
     model = Trains
@@ -30,8 +34,9 @@ class TrainsDetailView(DetailView):
     model = Trains
     template_name = 'train_details.html'
     context_object_name = 'train'
-    
-    
+
+
+
 def register_page(request):
     form = RegisterForm()
 
@@ -39,7 +44,7 @@ def register_page(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('login')
+            return redirect('login')
 
     context = {'form':form}
     return render(request,'Register.html',context)
@@ -49,7 +54,7 @@ def login_page(request):
     if request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request,username = username,password = password)
+        user = authenticate(request, username = username,password = password)
         if user is not None:
             login(request,user)
             return redirect('home')
@@ -59,6 +64,7 @@ def login_page(request):
 class LoginView(View):
     def post(self, request):
         username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
 

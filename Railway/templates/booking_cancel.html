@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}{% block content %}
+
+<h1>Balance : {{booking.users.balance}}</h1>
+<div class=" p-5">
+    <table class="table table-borderless table-hover">
+        <thead class="text-center">
+            <th>Train Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Total seats</th>
+            <th>Reserved seats</th>
+            <th>Type</th>
+            <th>Cost</th>
+            <th>Date</th>
+
+        </thead>
+
+        <tr class="text-center">
+            <td>{{ booking.trains.id}}</td>
+            <td>{{booking.trains.source}}</td>
+            <td> {{booking.trains.destination}}</td>
+            <td>{{booking.trains.seats_total}}</td>
+            <td>{{booking.trains.seats_res}}</td>
+            <td>{{booking.trains.types}}</td>
+            <td>{{booking.trains.cost}}</td>
+            <td> {{booking.trains.date}}</td>
+        </tr>
+    </table>
+</div>
+
+<a href='{% url "confirm_cancel" booking.id %} '><button type="button" class="btn btn-danger btn-lg btn-block">Confirm Cancellations</button> </a> {% endblock %}

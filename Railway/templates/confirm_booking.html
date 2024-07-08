@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block content%}
+<div class=" p-5">
+    <table class="table table-borderless table-hover">
+        <thead class="text-center">
+            <th>Train Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Total seats</th>
+            <th>Reserved seats</th>
+            <th>Type</th>
+            <th>Cost</th>
+            <th>Date</th>
+
+        </thead>
+
+        <tr class="text-center">
+            <td>{{ train.id}}</td>
+            <td>{{train.source}}</td>
+            <td> {{train.destination}}</td>
+            <td>{{train.seats_total}}</td>
+            <td>{{train.seats_res}}</td>
+            <td>{{train.types}}</td>
+            <td>{{train.cost}}</td>
+            <td> {{train.date}}</td>
+        </tr>
+    </table>
+</div>
+<form action="{% url 'confirm_booking' train.id %}" method="post">
+    {% csrf_token %} {{ form }}
+    <input type="submit" value="Submit">
+</form>Balance: {{request.user.balance}}</br>
+{% endblock content %}}

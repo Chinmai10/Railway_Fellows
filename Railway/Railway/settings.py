@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'Railway.urls'
 
 TEMPLATES = [
@@ -81,8 +82,14 @@ WSGI_APPLICATION = 'Railway.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'trains_db',
+        'USER' : 'root',
+        'PASSWORD': 'password123',
+        'HOST' : 'localhost',
+        'PORT': '3306',
+        
+        
     }
 }
 
@@ -124,4 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+
+AUTH_USER_MODEL = 'trains.Users'
 
