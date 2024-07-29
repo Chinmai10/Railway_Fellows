@@ -15,9 +15,10 @@
 
 
             <select name="types" id="id_types">
-                {% for type in types %}
-                <option value="{{type.0}}">{{type.0}}</option>
-                {% endfor %}
+                <option value="Normal">Normal</option>
+                <option value="Normal">Express</option>
+                <option value="Normal">ac</option>
+                
             </select>
 
             <input id="id_date" name="date" type="date" />
@@ -46,7 +47,7 @@
                 <a class="d-inline" href='{% url "trains" train.id %}'>
                     <button type="button" class="btn btn-dark">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        BOOK
+                                     BOOK
 
                     </button>
                 </a>

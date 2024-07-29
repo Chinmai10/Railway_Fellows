@@ -1,15 +1,15 @@
-from django.shortcuts import render, redirect,HttpResponse
+from django.shortcuts import render, redirect,HttpResponseRedirect , HttpResponse
 from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.views.generic import TemplateView,View
 from .filters import TrainsFilter
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm 
 from .forms import CreateUserForm,RegisterForm,NumberForm
 from django.contrib.auth import authenticate, login,logout
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
+Users = get_user_model()
 
 
 

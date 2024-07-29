@@ -5,10 +5,11 @@ from django.contrib.auth.models import AbstractUser,BaseUserManager,PermissionsM
 class Trains(models.Model):
     categories = (
         ('Normal','Normal'),
-        ('Express','Express')
+        ('Express','Express'),
+        ('AC' , 'AC') 
     )
     id = models.AutoField(primary_key=True)
-    source = models.CharField(max_length = 30,)
+    source = models.CharField(max_length = 30)
     destination = models.CharField(max_length = 30)
     seats_total = models.IntegerField()
     seats_res = models.IntegerField()
