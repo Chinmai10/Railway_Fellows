@@ -6,7 +6,7 @@ class Trains(models.Model):
     categories = (
         ('Normal','Normal'),
         ('Express','Express'),
-        ('AC' , 'AC') 
+        ('AC' , 'AC'),
     )
     id = models.AutoField(primary_key=True)
     source = models.CharField(max_length = 30)
